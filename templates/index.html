@@ -1,8 +1,19 @@
 {% extends "default.html"%}
 {% block body%}
-<h1>Welcome to Flask App</h1>
-<div class="container">
-    <p class="text">This is the home page of our Flask application.</p>
-    <p>Please <button class="btn btn-primary">login</button> to access all features.</p>
+<div class="home">
+    <div class="row align-items-center">
+        <div class="txt col-12 col-md-6 text-center">
+            <h1 class="text-center text-primary"> Welcome to Flask App </h1>
+            <div class="">
+                <p class=" text-muted"><i class="fa-solid fa-home"></i> This is the home page of our Flask application.
+                </p>
+                <p>Please <button class="btn btn-primary">login</button> to access all features.</p>
+            </div>
+        </div>
+        <div class="img col-12 col-md-6">
+            <img src="{{url_for('static', filename='images/intro.svg')}}" width="100%" />
+        </div>
+    </div>
 </div>
+
 {% endblock %}
