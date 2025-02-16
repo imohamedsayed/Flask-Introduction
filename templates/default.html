@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    {% if cssFile%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/' + cssFile)}}">
+    {% endif %}
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Flask Application</h1>
+            <div class="nav-links">
+                <a href="#" style="color: white; text-decoration: none; margin-left: 1rem;">Home</a>
+                <a href="#" style="color: white; text-decoration: none; margin-left: 1rem;">About</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block body%}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>© 2025 Flask App. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}">
+    </script>
+</body>
+
+</html>
+D
