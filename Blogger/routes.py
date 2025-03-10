@@ -1,9 +1,7 @@
-from flask import Flask, render_template, flash, redirect, url_for
-from forms import RegistrationForm, LoginForm
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = "b339f8784e4baa72e389743af5b2ddbfa4271aa615838d7fec426f1aa6530955"
-
+from flask import  render_template, flash, redirect, url_for
+from Blogger.models import User, Blog
+from Blogger.forms import RegistrationForm, LoginForm
+from Blogger import app
 
 @app.route('/', methods=['GET'])
 def index():
@@ -35,6 +33,3 @@ def register():
         flash(f'Account created for {form.name.data}', 'success')
         return redirect(url_for('index'))
     return render_template('register.html', title='register', form=form)
-
-if __name__ == "__main__":
-    app.run(debug=True)

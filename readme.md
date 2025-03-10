@@ -93,9 +93,12 @@ python -m pytest
 
 
 ## API Documentation
-Document your API endpoints here:
 
+GET /home
+GET /
+GET /about
+GET /login
+GET /register
 
-GET /api/v1/resource
-POST /api/v1/resource
-etc...
+POST /login
+POST /register
