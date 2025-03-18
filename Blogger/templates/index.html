@@ -3,11 +3,17 @@
 <div class="home">
     <div class="row align-items-center">
         <div class="txt col-12 col-md-6 text-center">
+            {% if user %}
+            <h1 class="text-center text-primary"> Welcome {{user.name}} to Blog App </h1>
+            {%else%}
             <h1 class="text-center text-primary"> Welcome to Blog App </h1>
+            {% endif %}
             <div class="">
                 <p class=" text-muted"><i class="fa-solid fa-home"></i> This is the home page of our Flask application.
                 </p>
+                {% if not user%}
                 <p>Please <button class="btn btn-primary">login</button> to access all features.</p>
+                {%endif%}
             </div>
         </div>
         <div class="img col-12 col-md-6">

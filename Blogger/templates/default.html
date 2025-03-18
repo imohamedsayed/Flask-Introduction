@@ -35,8 +35,21 @@
                     </li>
                 </ul>
                 <div class="d-flex">
+                    {% if current_user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="{{url_for('addBlog')}}">Add Blog</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+                        </ul>
+                    </div>
+                    {%else%}
                     <a href="{{url_for('login')}}"><button class="btn btn-outline-primary me-1">Login</button></a>
                     <a href="{{url_for('register')}}"> <button class="btn btn-primary">Sign Up</button></a>
+                    {%endif%}
                     </di>
                 </div>
             </div>
