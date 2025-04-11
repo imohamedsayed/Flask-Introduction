@@ -1,0 +1,21 @@
+{%extends 'default.html'%}
+
+{%block body%}
+<div class="blogs">
+    {%for blog in blogs%}
+    <div class="card mb-2">
+        <div class="card-header">
+            <h3>{{blog.title}}</h3>
+            <small>Posted by {{blog.author.name}} on {{blog.created_at}}</small>
+        </div>
+        <div class="card-body">
+            {{blog.content}}
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-outline-primary" href="{{url_for('blogs.updateBlog', blogId = blog.id)}}">Edit</a>
+            <a class="btn btn-outline-danger" href="{{url_for('blogs.deleteBlog', blogId = blog.id)}}">Delete</a>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{%endblock%}
