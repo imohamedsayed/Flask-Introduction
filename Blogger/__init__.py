@@ -13,6 +13,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:engmso14789@localhost/flas
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 loginManager = LoginManager(app)
-loginManager.login_view = "login"
+loginManager.login_view = "users.login"
 loginManager.login_message_category = "info"
-from Blogger import routes
+
+# import users, blogs, main blueprints
+from Blogger.main.routes import main
+from Blogger.users.routes import users
+from Blogger.blogs.routes import blogs
+
+app.register_blueprint(main)
+app.register_blueprint(users)
+app.register_blueprint(blogs)

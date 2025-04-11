@@ -25,14 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('about')}}">About</a>
+                        <a class="nav-link" href="{{url_for('main.about')}}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
+                        <a class="nav-link" href="{{url_for('main.contact')}}">Contact</a>
                     </li>
+                    {%if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('blogs.get_blogs')}}">My Blogs</a>
+                    </li>
+                    {%endif%}
                 </ul>
                 <div class="d-flex">
                     {% if current_user.is_authenticated %}
@@ -42,13 +47,13 @@
                             My Account
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="{{url_for('addBlog')}}">Add Blog</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('blogs.addBlog')}}">Add Blog</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('users.logout')}}">Logout</a></li>
                         </ul>
                     </div>
                     {%else%}
-                    <a href="{{url_for('login')}}"><button class="btn btn-outline-primary me-1">Login</button></a>
-                    <a href="{{url_for('register')}}"> <button class="btn btn-primary">Sign Up</button></a>
+                    <a href="{{url_for('users.login')}}"><button class="btn btn-outline-primary me-1">Login</button></a>
+                    <a href="{{url_for('users.register')}}"> <button class="btn btn-primary">Sign Up</button></a>
                     {%endif%}
                     </di>
                 </div>
