@@ -1,5 +1,5 @@
 from datetime import datetime
-from Blogger import db, loginManager
+from Blogger import db, loginManager, app
 from flask_login import UserMixin
 
 
@@ -9,6 +9,7 @@ def load_user(userId):
 
 
 class User(db.Model, UserMixin):
+    __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
     phone = db.Column(db.String(11), unique=True, nullable=False)
@@ -22,6 +23,7 @@ class User(db.Model, UserMixin):
 
 
 class Blog(db.Model):
+    __tablename__ = "blog"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
@@ -31,3 +33,7 @@ class Blog(db.Model):
 
     def __repr__(self):
         return f"Blog ( {self.title}, {self.created_at} )"
+
+
+with app.app_context():
+    db.create_all()
